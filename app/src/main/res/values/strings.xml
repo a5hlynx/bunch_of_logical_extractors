@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Bunch of Logical Extractors</string>
+    <string name="contacts">Contacts</string>
+    <string name="call_log">Call Log</string>
+    <string name="browser">Browser</string>
+    <string name="system">System</string>
+    <string name="telephony">SMS &amp; MMS</string>
+    <string name="calendar">Calendar</string>
+    <string name="user_dictionary">User Dictionary</string>
+    <string name="media">Media</string>
+    <string name="im">IM</string>
+    <string name="packages">Packages</string>
+    <string name="providers">Providers</string>
+    <string name="accounts">Accounts</string>
+    <string name="all">ALL</string>
+    <string name="clear">CLEAR</string>
+    <string name="extract">EXTRACT</string>
+    <string name="json">JSON</string>
+    <string name="xml">XML</string>
+</resources>

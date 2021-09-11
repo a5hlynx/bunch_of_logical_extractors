@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.BunchOfLogicalExtractors.AppBarOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.038">
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:background="@color/blue"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/bole_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/Theme.BunchOfLogicalExtractors.PopupOverlay"
+        app:title="@string/app_name"
+        app:titleMarginBottom="0dp"
+        app:titleMarginTop="0dp"
+        app:titleTextAppearance="@style/Theme.BunchOfLogicalExtractors.ActionBar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:isScrollContainer="false"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/scrollbar"
+        android:background="@drawable/scroll"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:fadeScrollbars="false"
+        android:id="@+id/scrollViewLL">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/checkbox"
+        android:theme="@style/Theme.BunchOfLogicalExtractors.CheckBox"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/scrollViewLL"
+        app:layout_constraintStart_toStartOf="@+id/scrollViewLL"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewLL">
+
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="190dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/cb_browser"
+                android:layout_width="144dp"
+                android:layout_height="30dp"
+                android:text="@string/browser"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_calendar"
+                android:layout_width="144dp"
+                android:layout_height="30dp"
+                android:text="@string/calendar"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_call_log"
+                android:layout_width="111dp"
+                android:layout_height="30dp"
+                android:text="@string/call_log"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_contacts"
+                android:layout_width="130dp"
+                android:layout_height="30dp"
+                android:text="@string/contacts"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_media"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:text="@string/media"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_im"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:text="@string/im"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="190dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/cb_sms"
+                android:layout_width="144dp"
+                android:layout_height="30dp"
+                android:text="@string/telephony"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_system"
+                android:layout_width="144dp"
+                android:layout_height="30dp"
+                android:text="@string/system"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_user_dictionary"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:text="@string/user_dictionary"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_account_info"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:text="@string/accounts"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_package_info"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:text="@string/packages"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <CheckBox
+                android:id="@+id/cb_provider_info"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:text="@string/providers"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+    <RadioGroup
+        android:id="@+id/rg_format"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/menu"
+        android:gravity="center_vertical|right"
+        android:orientation="horizontal"
+        android:theme="@style/Theme.BunchOfLogicalExtractors.RadioButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewLL">
+
+        <RadioButton
+            android:id="@+id/rb_xml"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="@string/xml"
+            android:textColor="@color/white"
+            android:textStyle="italic|bold" />
+
+        <RadioButton
+            android:id="@+id/rb_json"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="@string/json"
+            android:textColor="@color/white"
+            android:textStyle="italic|bold" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/bt_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:backgroundTint="@color/blue"
+        android:onClick="checkAll"
+        android:text="@string/all"
+        android:textColor="@color/white"
+        android:textStyle="italic|bold"
+        app:layout_constraintEnd_toStartOf="@+id/bt_clear"
+        app:layout_constraintTop_toBottomOf="@+id/rg_format" />
+
+    <Button
+        android:id="@+id/bt_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:backgroundTint="@color/blue"
+        android:onClick="clearAll"
+        android:text="@string/clear"
+        android:textColor="@color/white"
+        android:textStyle="italic|bold"
+        app:layout_constraintEnd_toStartOf="@+id/bt_extract"
+        app:layout_constraintTop_toBottomOf="@+id/rg_format" />
+
+    <Button
+        android:id="@+id/bt_extract"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/extract"
+        android:textColor="@color/white"
+        android:textStyle="italic|bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_format" />
+
+    <ScrollView
+        android:id="@+id/scrollViewTV"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/scroll"
+        android:isScrollContainer="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/scrollbar"
+        app:layout_constraintTop_toBottomOf="@+id/bt_clear"
+        app:layout_constraintVertical_bias="0.022">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/bt_clear" />
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
