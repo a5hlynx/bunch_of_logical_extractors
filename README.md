@@ -25,7 +25,7 @@ Providers
 
 Done...
 
-Files asre saved under /storage/emulated/0/Documents/g4n.bole/20210912071808
+Files are saved under /storage/emulated/0/Documents/g4n.bole/20210912071808
 ```
 
 Copy the extracted data using adb pull as shown below.
