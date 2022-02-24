@@ -19,7 +19,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class PackageReader extends InfoReader {
+public class PackageReader extends InfoReader{
     private Context context;
     private OutputFormat fmt;
     private String info;
@@ -40,14 +40,14 @@ public class PackageReader extends InfoReader {
         this.opf = "";
     }
     public void setInfoInJSON(){
-        try {
+        try{
             final PackageManager pm = this.context.getPackageManager();
             List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
             org.json.JSONObject recs = new org.json.JSONObject();
             org.json.JSONObject rec = new org.json.JSONObject();
             org.json.JSONArray kvs = new org.json.JSONArray();
             this.count = 0;
-            for (int i=0; i< packages.size(); i++ ){
+            for(int i=0; i< packages.size(); i++){
                 ApplicationInfo ai = packages.get(i);
                 org.json.JSONObject kv = new org.json.JSONObject();
                 kv.put("packageName", ai.packageName);
@@ -58,13 +58,13 @@ public class PackageReader extends InfoReader {
             recs.put("recs", rec);
             this.info = recs.toString();
             this.opf = this.in + ".json";
-        } catch (Exception e){
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
-    public void setInfoInXML() {
+    public void setInfoInXML(){
 
-        try {
+        try{
             final PackageManager pm = this.context.getPackageManager();
             List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -90,15 +90,13 @@ public class PackageReader extends InfoReader {
             tf.transform(new DOMSource(doc), new StreamResult(sw));
             this.info = sw.toString();
             this.opf = this.in + ".xml";
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
         }
 
     }
     protected String getInfo(){ return this.info; }
     protected String getOutPutFile(){ return this.opf; }
-    protected String getInfoName() { return this.in; }
-    protected int getCount(){
-        return this.count;
-    }
+    protected String getInfoName(){ return this.in; }
+    protected int getCount(){ return this.count; }
 }

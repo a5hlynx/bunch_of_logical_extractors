@@ -38,13 +38,13 @@ public class AccountReader extends InfoReader{
         this.opf = "";
     }
     public void setInfoInJSON(){
-        try {
+        try{
             Account[] accounts = AccountManager.get(this.context).getAccounts();
             org.json.JSONObject recs = new org.json.JSONObject();
             org.json.JSONObject rec = new org.json.JSONObject();
             org.json.JSONArray kvs = new org.json.JSONArray();
             this.count = 0;
-            for(int i=0; i< accounts.length; i++) {
+            for(int i=0; i< accounts.length; i++){
                 org.json.JSONObject kv = new org.json.JSONObject();
                 kv.put("name", accounts[i].name);
                 kvs.put(kv);
@@ -54,19 +54,19 @@ public class AccountReader extends InfoReader{
             recs.put("recs", rec);
             this.info = recs.toString();
             this.opf = this.in + ".json";
-        } catch (Exception e){
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
     public void setInfoInXML(){
-        try {
+        try{
             Account[] accounts = AccountManager.get(this.context).getAccounts();
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.newDocument();
             Element recs = doc.createElement("recs");
             this.count = 0;
-            for (int i =0; i < accounts.length; i++){
+            for(int i =0; i < accounts.length; i++){
                 Element rec = doc.createElement("rec");
                 Element k = doc.createElement("name");
                 Text v = doc.createTextNode(accounts[i].name);
@@ -82,7 +82,7 @@ public class AccountReader extends InfoReader{
             tf.transform(new DOMSource(doc), new StreamResult(sw));
             this.info = sw.toString();
             this.opf = this.in + ".xml";
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
         }
 
@@ -91,5 +91,4 @@ public class AccountReader extends InfoReader{
     public String getOutPutFile(){ return this.opf; }
     public String getInfoName(){ return this.in;}
     public int getCount(){ return this.count; }
-
 }

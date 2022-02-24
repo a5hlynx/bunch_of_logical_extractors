@@ -17,7 +17,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import static android.database.Cursor.FIELD_TYPE_BLOB;
 
-public class ContentRetriever {
+public abstract class ContentRetriever{
     private Context context;
     private String selection = null;
     private OutputFormat fmt = OutputFormat.XML;
@@ -30,14 +30,14 @@ public class ContentRetriever {
         this.context = context;
         this.fmt = fmt;
     }
-    protected void setContent() {
-        switch (this.fmt) {
+    protected void setContent(){
+        switch (this.fmt){
             case JSON:
-                for(int z = 0; z < this.CONTENT_URIs.length; z++) {
+                for(int z = 0; z < this.CONTENT_URIs.length; z++){
                     ContentProviderClient cli = null;
-                    try {
+                    try{
                         cli = this.context.getContentResolver().acquireContentProviderClient(CONTENT_URIs[z]);
-                    } catch (Exception e) {
+                    }catch (Exception e){
                         cli = null;
                         e.printStackTrace();
                     }
@@ -48,11 +48,11 @@ public class ContentRetriever {
                 break;
             case XML:
             default:
-                for(int z = 0; z < this.CONTENT_URIs.length; z++) {
+                for(int z = 0; z < this.CONTENT_URIs.length; z++){
                     ContentProviderClient cli = null;
-                    try {
+                    try{
                         cli = this.context.getContentResolver().acquireContentProviderClient(CONTENT_URIs[z]);
-                    } catch (Exception e) {
+                    }catch (Exception e){
                         cli = null;
                         e.printStackTrace();
                     }
@@ -71,27 +71,27 @@ public class ContentRetriever {
         this.contents = new String[this.CONTENT_URIs.length];
         this.counts = new int[this.CONTENT_URIs.length];
         this.opfs = new String[this.CONTENT_URIs.length];
-        for( int i =0;  i < this.CONTENT_URIs.length; i++){
+        for(int i =0;  i < this.CONTENT_URIs.length; i++){
             this.contents[i] = "";
             this.counts[i] = 0;
             this.opfs[i] = "";
         }
     }
-    protected void setContentInJSON(int z) {
-        try {
+    private void setContentInJSON(int z){
+        try{
             Cursor c = this.context.getContentResolver().query(CONTENT_URIs[z], null, selection, null, null);
             org.json.JSONObject recs = new org.json.JSONObject();
             org.json.JSONObject rec = new org.json.JSONObject();
             org.json.JSONArray kvs = new org.json.JSONArray();
             this.counts[z] = 0;
-            while (c.moveToNext()) {
+            while (c.moveToNext()){
                 org.json.JSONObject kv = new org.json.JSONObject();
-                for (int i = 0; i < c.getColumnCount(); i++) {
-                    if (c.getType(i) == FIELD_TYPE_BLOB) {
+                for (int i = 0; i < c.getColumnCount(); i++){
+                    if (c.getType(i) == FIELD_TYPE_BLOB){
                         kv.put(c.getColumnName(i), "");
-                    } else if (c.getString(i) != null) {
+                    }else if (c.getString(i) != null){
                         kv.put(c.getColumnName(i), c.getString(i));
-                    } else {
+                    }else{
                         kv.put(c.getColumnName(i), "");
                     }
                 }
@@ -103,28 +103,28 @@ public class ContentRetriever {
             this.contents[z] = recs.toString();
             this.opfs[z] = this.cns[z] + ".json";
             c.close();
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
-    protected void setContentInXML(int z){
-        try {
+    private void setContentInXML(int z){
+        try{
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             Cursor c = this.context.getContentResolver().query(CONTENT_URIs[z], null, selection, null, null);
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.newDocument();
             Element recs = doc.createElement("recs");
             this.counts[z] = 0;
-            while (c.moveToNext()) {
+            while (c.moveToNext()){
                 Element rec = doc.createElement("rec");
-                for (int i = 0; i < c.getColumnCount(); i++) {
+                for (int i = 0; i < c.getColumnCount(); i++){
                     Element k = doc.createElement(c.getColumnName(i));
                     Text v;
-                    if (c.getType(i) == FIELD_TYPE_BLOB) {
+                    if (c.getType(i) == FIELD_TYPE_BLOB){
                         v = doc.createTextNode("");
-                    } else if (c.getString(i) != null) {
+                    }else if (c.getString(i) != null){
                         v = doc.createTextNode(c.getString(i));
-                    } else {
+                    }else{
                         v = doc.createTextNode("");
                     }
                     k.appendChild(v);
@@ -141,21 +141,13 @@ public class ContentRetriever {
             tf.transform(new DOMSource(doc), new StreamResult(sw));
             this.contents[z] = sw.toString();
             this.opfs[z] = this.cns[z] + ".xml";
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
-    protected String[] getContents(){
-        return this.contents;
-    }
-    protected String[] getOutPutFiles(){
-        return this.opfs;
-    }
-    protected int[] getCounts(){
-        return this.counts;
-    }
-    protected int getNumOfUri(){
-        return this.CONTENT_URIs.length;
-    }
-    protected Uri[] getCONTENT_URIs(){ return this.CONTENT_URIs;}
+    protected String[] getContents(){ return this.contents; }
+    protected String[] getOutPutFiles(){ return this.opfs; }
+    protected int[] getCounts(){ return this.counts; }
+    protected int getNumOfUri(){ return this.CONTENT_URIs.length; }
+    protected Uri[] getCONTENT_URIs(){ return this.CONTENT_URIs; }
 }

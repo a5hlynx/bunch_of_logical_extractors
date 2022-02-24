@@ -19,7 +19,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class ProviderReader extends InfoReader {
+public class ProviderReader extends InfoReader{
 
     private Context context;
     private OutputFormat fmt;
@@ -42,7 +42,7 @@ public class ProviderReader extends InfoReader {
         this.opf = "";
     }
     public void setInfoInJSON(){
-        try {
+        try{
             final PackageManager pm = this.context.getPackageManager();
             org.json.JSONObject recs = new org.json.JSONObject();
             org.json.JSONObject rec = new org.json.JSONObject();
@@ -70,13 +70,13 @@ public class ProviderReader extends InfoReader {
             recs.put("recs", rec);
             this.info = recs.toString();
             this.opf = this.in + ".json";
-        } catch (Exception e){
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
-    public void setInfoInXML() {
+    public void setInfoInXML(){
 
-        try {
+        try{
             final PackageManager pm = this.context.getPackageManager();
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = null;
@@ -121,15 +121,13 @@ public class ProviderReader extends InfoReader {
             tf.transform(new DOMSource(doc), new StreamResult(sw));
             this.info = sw.toString();
             this.opf = this.in + ".xml";
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
         }
 
     }
     protected String getInfo(){ return this.info; }
     protected String getOutPutFile(){ return this.opf; }
-    protected String getInfoName() { return this.in; }
-    protected int getCount(){
-        return this.count;
-    }
+    protected String getInfoName(){ return this.in; }
+    protected int getCount(){ return this.count; }
 }

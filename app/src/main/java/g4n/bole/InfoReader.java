@@ -2,7 +2,7 @@ package g4n.bole;
 
 import android.content.Context;
 
-public class InfoReader {
+public abstract class InfoReader{
     private Context context;
     private OutputFormat fmt;
     private String info;
@@ -13,8 +13,8 @@ public class InfoReader {
         this.context = context;
         this.fmt = fmt;
     }
-    protected void setInfo() {
-        switch (this.fmt) {
+    protected void setInfo(){
+        switch(this.fmt){
             case JSON:
                 setInfoInJSON();
                 break;
@@ -24,12 +24,10 @@ public class InfoReader {
                 break;
         }
     }
-    protected void setInfoInJSON() {}
-    protected void setInfoInXML(){}
+    abstract void setInfoInJSON();
+    abstract void setInfoInXML();
     protected String getInfo(){ return this.info; }
     protected String getOutPutFile(){ return this.opf; }
-    protected String getInfoName() { return this.in; }
-    protected int getCount(){
-        return this.count;
-    }
+    protected String getInfoName(){ return this.in; }
+    protected int getCount(){ return this.count; }
 }

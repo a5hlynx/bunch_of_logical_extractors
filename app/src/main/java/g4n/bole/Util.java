@@ -11,18 +11,18 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Util {
+public class Util{
     @SuppressWarnings("deprecation")
-    public static String getDirForEvidence(Context context ) {
+    public static String getDirForEvidence(Context context){
         String path = "";
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R ) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R ){
             path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString();
-        } else {
+        }else{
             path = context.getExternalFilesDir(null).toString();
         }
 
         path = path + "/" + context.getPackageName();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
             LocalDateTime d = null;
             d = LocalDateTime.now();
             path = path + "/"
@@ -32,7 +32,7 @@ public class Util {
                     + String.format("%02d", Integer.valueOf(d.getHour()))
                     + String.format("%02d", Integer.valueOf(d.getMinute()))
                     + String.format("%02d", Integer.valueOf(d.getSecond()));
-        } else {
+        }else{
             DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
             Date d = new Date(System.currentTimeMillis());
             path = path + "/" + df.format(d);
@@ -42,10 +42,10 @@ public class Util {
     public static void saveEvidence(String filename, String content){
         File f = new File(filename);
         f.delete();
-        try {
+        try{
             FileOutputStream fileOutputStream = new FileOutputStream(filename, true);
             fileOutputStream.write(content.getBytes());
-        } catch (IOException e) {
+        }catch(IOException e){
             e.printStackTrace();
         }
     }
